@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Product candidates from AliExpress being evaluated for arbitrage
+model Product {
+  id                String   @id @default(cuid())
+  title             String
+  description       String?
+  category          String?
+  
+  // AliExpress data
+  aliexpressUrl     String?
+  aliexpressPrice   Decimal? @db.Decimal(10, 2)
+  aliexpressShipping Decimal? @db.Decimal(10, 2)
+  moq               Int?     // Minimum order quantity
+  supplierId        String?
+  supplier          Supplier? @relation(fields: [supplierId], references: [id])
+  
+  // Amazon data
+  amazonAsin        String?
+  amazonUrl         String?
+  amazonPrice       Decimal? @db.Decimal(10, 2)
+  bsr               Int?     // Best Seller Rank
+  reviewCount       Int?
+  avgRating         Decimal? @db.Decimal(3, 2)
+  
+  // Calculated metrics
+  estimatedMargin   Decimal? @db.Decimal(5, 2) // Percentage
+  estimatedProfit   Decimal? @db.Decimal(10, 2)
+  fbaFees           Decimal? @db.Decimal(10, 2)
+  referralFee       Decimal? @db.Decimal(10, 2)
+  
+  // Status
+  status            ProductStatus @default(RESEARCH)
+  notes             String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  inventory         Inventory[]
+  orders            Order[]
+  researchNotes     ResearchNote[]
+}
+
+enum ProductStatus {
+  RESEARCH      // Being researched
+  EVALUATING    // Being evaluated (samples ordered)
+  APPROVED      // Approved for launch
+  LAUNCHED      // Live on Amazon
+  PAUSED        // Temporarily paused
+  DISCONTINUED  // No longer selling
+}
+
+/// Supplier/manufacturer from AliExpress
+model Supplier {
+  id              String   @id @default(cuid())
+  name            String
+  aliexpressUrl   String?
+  contactEmail    String?
+  contactName     String?
+  rating          Decimal? @db.Decimal(3, 2)
+  yearsInBusiness Int?
+  responseRate    Decimal? @db.Decimal(5, 2) // Percentage
+  responseTime    String?  // e.g., "< 24 hours"
+  
+  // Manufacturing capabilities
+  moq             Int?
+  leadTimeDays    Int?
+  customLogo      Boolean? @default(false)
+  customPackaging Boolean? @default(false)
+  
+  notes           String?
+  rating_internal Int?     // Internal rating 1-5
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  products        Product[]
+  orders          Order[]
+}
+
+/// Inventory tracking for FBA
+model Inventory {
+  id              String   @id @default(cuid())
+  productId       String
+  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  quantity        Int      @default(0)
+  reservedQuantity Int     @default(0)
+  sellableQuantity Int     @default(0)
+  
+  // FBA warehouse info
+  warehouseId     String?
+  warehouseName   String?
+  
+  // Cost basis
+  unitCost        Decimal  @db.Decimal(10, 2)
+  totalCost       Decimal  @db.Decimal(10, 2)
+  shippingCost    Decimal? @db.Decimal(10, 2)
+  
+  // Dates
+  receivedAt      DateTime?
+  lastUpdated     DateTime @updatedAt
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([productId])
+}
+
+/// Purchase orders for tracking inventory purchases
+model Order {
+  id              String   @id @default(cuid())
+  orderNumber     String   @unique
+  
+  productId       String?
+  product         Product? @relation(fields: [productId], references: [id])
+  
+  supplierId      String?
+  supplier        Supplier? @relation(fields: [supplierId], references: [id])
+  
+  quantity        Int
+  unitPrice       Decimal  @db.Decimal(10, 2)
+  totalPrice      Decimal  @db.Decimal(10, 2)
+  shippingCost    Decimal? @db.Decimal(10, 2)
+  
+  status          OrderStatus @default(PENDING)
+  
+  // Shipping
+  trackingNumber  String?
+  carrier         String?
+  estimatedDelivery DateTime?
+  actualDelivery  DateTime?
+  
+  notes           String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([productId])
+  @@index([supplierId])
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PRODUCTION
+  SHIPPED
+  IN_TRANSIT
+  DELIVERED
+  CANCELLED
+}
+
+/// Product research notes and analysis
+model ResearchNote {
+  id          String   @id @default(cuid())
+  title       String
+  content     String?
+  productId   String?
+  product     Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  tags        String[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([productId])
+}
