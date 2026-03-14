@@ -1,0 +1,44 @@
+# Atomic Facts - E-commerce Arbitrage Company
+
+facts:
+  - id: f001
+    type: mission
+    content: "Empower everyday consumers to achieve financial independence through accessible e-commerce arbitrage"
+    source: docs/MISSION_VISION.md
+    created: 2026-03-14
+    status: active
+
+  - id: f002
+    type: business_model
+    content: "AliExpress to Amazon FBA arbitrage with 30-40% gross margin target"
+    source: docs/MISSION_VISION.md
+    created: 2026-03-14
+    status: active
+
+  - id: f003
+    type: target_market
+    content: "Value-conscious Prime members, age 25-45, income $40K-$100K, US/UK/Canada/Australia"
+    source: docs/GTM_STRATEGY.md
+    created: 2026-03-14
+    status: active
+
+  - id: f004
+    type: product_categories
+    content: "Home & Kitchen, Electronics Accessories, Fitness & Outdoor, Pet Supplies, Beauty Tools"
+    source: docs/GTM_STRATEGY.md
+    created: 2026-03-14
+    status: active
+
+  - id: f005
+    type: financial_target
+    content: "First profitable month: $1K net profit by Month 3. Sustainable income: $10K/month by Month 12"
+    source: docs/MISSION_VISION.md
+    created: 2026-03-14
+    status: active
+
+  - id: f006
+    type: capital_requirement
+    content: "Initial investment: $3,550-$6,400. Ongoing monthly: $750-$3,400 plus inventory"
+    source: docs/GTM_STRATEGY.md
+    created: 2026-03-14
+    status: active
