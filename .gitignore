@@ -49,3 +49,10 @@ temp/
 
 # OS files
 Thumbs.db
+
+# Next.js
+.next/
+**/.next/
+
+# Turborepo
+.turbo/
