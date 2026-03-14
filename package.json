@@ -4,10 +4,11 @@
   "private": true,
   "description": "AliExpress to Amazon arbitrage business",
   "scripts": {
-    "test": "echo \"No tests specified yet\" && exit 0",
-    "build": "echo \"No build specified yet\" && exit 0",
-    "dev": "echo \"No dev server specified yet\" && exit 0",
-    "lint": "echo \"No linter specified yet\" && exit 0"
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --filter web lint",
+    "test": "echo \"No tests specified yet\" && exit 0"
   },
   "keywords": [
     "arbitrage",
@@ -16,5 +17,8 @@
     "aliexpress"
   ],
   "author": "",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.0.0"
+  }
 }

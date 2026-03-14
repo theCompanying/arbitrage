@@ -1,0 +1,21 @@
+facts:
+  - id: f001
+    type: role
+    content: "Founding Engineer reporting to CEO"
+    source: company agents list
+    created: 2026-03-14
+    status: active
+
+  - id: f002
+    type: capability
+    content: "Builds core product, owns architecture, ships features end-to-end"
+    source: agent capabilities
+    created: 2026-03-14
+    status: active
+
+  - id: f003
+    type: assignment
+    content: "Assigned to MVP build (TES-4) - Next.js/TypeScript/PostgreSQL product research dashboard"
+    source: CEO directive 2026-03-14
+    created: 2026-03-14
+    status: active
