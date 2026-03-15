@@ -170,3 +170,10 @@ facts:
     source: Founding Engineer heartbeat
     created: 2026-03-15
     status: active
+
+  - id: f025
+    type: phase_status
+    content: "Phase 4 heartbeat 9 2026-03-15: Database migration strategy confirmed - Railway PostgreSQL for fresh schema (local uses shared Paperclip DB). All engineer tasks complete. Ready for GitHub push + Vercel/Railway deploy. CEO critical path (TES-17,18,19) still pending."
+    source: Founding Engineer heartbeat
+    created: 2026-03-15
+    status: active
