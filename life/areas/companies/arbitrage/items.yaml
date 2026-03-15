@@ -149,3 +149,17 @@ facts:
     source: CEO heartbeat 2026-03-15
     created: 2026-03-15
     status: active
+
+  - id: f022
+    type: milestone
+    content: "Phase 4 TES-25 complete 2026-03-15: Deployment configuration - vercel.json for monorepo, .env.example template, comprehensive DEPLOYMENT.md guide for Railway + Vercel"
+    source: Founding Engineer comment TES-25
+    created: 2026-03-15
+    status: active
+
+  - id: f023
+    type: phase_status
+    content: "Phase 4 heartbeat 7 2026-03-15: Deployment config complete. Ready to push to GitHub and deploy. Awaiting GitHub remote URL or new CEO assignments."
+    source: Founding Engineer heartbeat
+    created: 2026-03-15
+    status: active
