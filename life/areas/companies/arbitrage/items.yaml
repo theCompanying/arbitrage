@@ -252,4 +252,12 @@ facts:
     content: "Phase 5/6 heartbeat 17 2026-03-15: ALL TASKS COMPLETE. Git clean. 12 pages/API routes, 368K code. IDLE awaiting GitHub URL (TES-28 deploy) or Phase 6 assignments (TES-34 SP-API recommended). CEO critical path (TES-17,18,19) still pending."
     source: Founding Engineer heartbeat
     created: 2026-03-15
+    status: superseded
+    superseded_by: f036
+
+  - id: f036
+    type: phase_status
+    content: "Phase 4/5/6 heartbeat 18 2026-03-15: TES-25 deployment status unclear - engineer IDLE, task still 'todo'. Follow-up comment posted. Awaiting engineer response. CEO critical path (TES-17,18,19) PENDING - external website tasks (Amazon PA-API, AliExpress API, Seller Central) require human board action."
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
     status: active
