@@ -107,3 +107,17 @@ facts:
     source: Phase 3 plan, research log
     created: 2026-03-15
     status: active
+
+  - id: f016
+    type: milestone
+    content: "Phase 4 TES-22 complete 2026-03-15: Database integration done - API routes for CRUD operations, frontend fetches from PostgreSQL, Prisma client built"
+    source: Founding Engineer comment TES-22
+    created: 2026-03-15
+    status: active
+
+  - id: f017
+    type: phase_status
+    content: "Phase 4 launch prep in progress 2026-03-15: CEO owns API applications (1-3 day approval), Engineer building product scraper (TES-23) and listing generator (TES-24)"
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: active
