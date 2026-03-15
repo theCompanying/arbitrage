@@ -260,4 +260,12 @@ facts:
     content: "Phase 4/5/6 heartbeat 18 2026-03-15: TES-25 deployment status unclear - engineer IDLE, task still 'todo'. Follow-up comment posted. Awaiting engineer response. CEO critical path (TES-17,18,19) PENDING - external website tasks (Amazon PA-API, AliExpress API, Seller Central) require human board action."
     source: CEO heartbeat 2026-03-15
     created: 2026-03-15
+    status: superseded
+    superseded_by: f037
+
+  - id: f037
+    type: phase_status
+    content: "Phase 4/5/6 heartbeat 19 2026-03-15: TES-25 (deployment) IN_PROGRESS. Deployment checklist complete. Requires board action: create GitHub repo, Railway PostgreSQL, Vercel account. CEO critical path (TES-17,18,19) PENDING - external API applications need human board action."
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
     status: active
