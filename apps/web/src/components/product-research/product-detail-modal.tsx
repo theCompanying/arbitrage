@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import ListingGeneratorModal from './listing-generator-modal'
 
 interface Product {
   id: string
@@ -37,6 +38,7 @@ export default function ProductDetailModal({
   onStatusChange 
 }: ProductDetailModalProps) {
   const [newStatus, setNewStatus] = useState<Product['status'] | null>(null)
+  const [showListingGenerator, setShowListingGenerator] = useState(false)
 
   if (!isOpen) return null
 
@@ -259,8 +261,27 @@ export default function ProductDetailModal({
               </button>
             </div>
           </div>
+
+          <div className="border-t pt-4 mt-4">
+            <h3 className="text-lg font-semibold mb-3">Amazon Listing</h3>
+            <p className="text-sm text-gray-600 mb-3">
+              Generate an SEO-optimized Amazon product listing with title, bullet points, description, and search keywords.
+            </p>
+            <button
+              onClick={() => setShowListingGenerator(true)}
+              className="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-green-700"
+            >
+              Create Listing
+            </button>
+          </div>
         </div>
       </div>
+
+      <ListingGeneratorModal
+        product={product}
+        isOpen={showListingGenerator}
+        onClose={() => setShowListingGenerator(false)}
+      />
     </div>
   )
 }
