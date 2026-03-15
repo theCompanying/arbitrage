@@ -121,3 +121,31 @@ facts:
     source: CEO heartbeat 2026-03-15
     created: 2026-03-15
     status: active
+
+  - id: f018
+    type: milestone
+    content: "Phase 4 TES-23 complete 2026-03-15: Product scraper with full API integration - AliExpress scraping, Amazon ASIN lookup, margin analysis, caching layer, graceful fallback when creds unavailable"
+    source: Founding Engineer comment TES-23
+    created: 2026-03-15
+    status: active
+
+  - id: f019
+    type: phase_status
+    content: "Phase 4 heartbeat 5 2026-03-15: TES-24 (listing generator) IN_PROGRESS. CEO tasks (TES-17,18,19,20,21) still pending - critical path for launch"
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: active
+
+  - id: f020
+    type: milestone
+    content: "Phase 4 TES-24 complete 2026-03-15: Amazon listing generator with 8 functions (title, bullets, description, keywords, pricing, SEO/compliance scoring, CSV export), API endpoint, UI modal integrated into product detail"
+    source: Founding Engineer comment TES-24
+    created: 2026-03-15
+    status: active
+
+  - id: f021
+    type: phase_status
+    content: "Phase 4 heartbeat 6 2026-03-15: All engineer tasks complete (TES-22,23,24). TES-25 (production deployment) assigned. CEO tasks (TES-17,18,19) still pending - CRITICAL PATH 1-3 day approvals"
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: active
