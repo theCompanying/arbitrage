@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@arbitrage/database'
+import { getProductScraper } from '@/lib/product-scraper'
 
 export async function POST(request: NextRequest) {
   try {
-    const { url } = await request.json()
+    const body = await request.json()
+    const { url, amazonAsin } = body
 
     if (!url || typeof url !== 'string') {
       return NextResponse.json(
@@ -19,14 +21,67 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const productData = await fetchAliExpressProduct(url)
+    const scraper = getProductScraper()
+    const importResult = await scraper.importFromAliExpressUrl(url, amazonAsin)
+
+    if (!importResult.success || !importResult.data) {
+      return NextResponse.json(
+        { error: importResult.error || 'Failed to import product' },
+        { status: 500 }
+      )
+    }
+
+    const { data } = importResult
+    const { aliexpress, amazon, marginCalculation, profitabilityScore, recommendation } = data
+
+    let supplierId: string | null = null
+
+    if (aliexpress.supplier?.sellerId) {
+      const existingSupplier = await prisma.supplier.findFirst({
+        where: {
+          name: aliexpress.supplier.sellerName || 'Unknown Supplier',
+        },
+      })
+
+      if (existingSupplier) {
+        supplierId = existingSupplier.id
+      } else {
+        const newSupplier = await prisma.supplier.create({
+          data: {
+            name: aliexpress.supplier.sellerName || 'Unknown Supplier',
+            aliexpressUrl: aliexpress.supplier.storeUrl || aliexpress.productUrl,
+            rating: aliexpress.supplier.positiveRating
+              ? aliexpress.supplier.positiveRating / 100
+              : null,
+            moq: aliexpress.moq,
+          },
+        })
+        supplierId = newSupplier.id
+      }
+    }
 
     const product = await prisma.product.create({
       data: {
-        title: productData?.title || 'Imported Product',
-        aliexpressUrl: url,
-        aliexpressPrice: productData?.price || 0,
+        title: aliexpress.title || 'Imported Product',
+        description: aliexpress.description || null,
+        category: aliexpress.categoryName || null,
+        aliexpressUrl: aliexpress.productUrl,
+        aliexpressPrice: aliexpress.price?.min || 0,
+        aliexpressShipping: aliexpress.shipping?.cost || 0,
+        moq: aliexpress.moq || 1,
+        supplierId: supplierId || null,
+        amazonAsin: amazon.asin !== 'PENDING' ? amazon.asin : null,
+        amazonUrl: null,
+        amazonPrice: amazon.price?.amount ? amazon.price.amount / 100 : null,
+        bsr: amazon.salesRank || null,
+        reviewCount: amazon.reviewsTotal || null,
+        avgRating: amazon.rating || null,
+        estimatedMargin: marginCalculation.netMarginPercent,
+        estimatedProfit: marginCalculation.netProfit,
+        fbaFees: marginCalculation.fbaFulfillmentFee,
+        referralFee: marginCalculation.referralFee,
         status: 'RESEARCH',
+        notes: `${recommendation.verdict}: ${recommendation.reason} (Score: ${profitabilityScore}/100)`,
       },
       include: {
         supplier: true,
@@ -57,50 +112,35 @@ export async function POST(request: NextRequest) {
         notes: product.notes,
         moq: product.moq,
         supplierId: product.supplierId,
+        profitabilityScore,
+        recommendation: recommendation.verdict,
         createdAt: product.createdAt.toISOString(),
         updatedAt: product.updatedAt.toISOString(),
+      },
+      analysis: {
+        aliexpress: {
+          title: aliexpress.title,
+          price: aliexpress.price,
+          shipping: aliexpress.shipping,
+          supplier: aliexpress.supplier,
+          rating: aliexpress.rating,
+          orders: aliexpress.orders,
+        },
+        amazon: {
+          title: amazon.title,
+          price: amazon.price,
+          rating: amazon.rating,
+          salesRank: amazon.salesRank,
+        },
+        margin: marginCalculation,
+        sizeTier: data.sizeTier,
       },
     })
   } catch (error) {
     console.error('Import error:', error)
     return NextResponse.json(
-      { error: 'Failed to import product' },
+      { error: 'Failed to import product', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }
-}
-
-async function fetchAliExpressProduct(url: string): Promise<Partial<Product> | null> {
-  try {
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-      },
-    })
-
-    if (!response.ok) {
-      return null
-    }
-
-    const html = await response.text()
-
-    const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i)
-    const title = titleMatch ? titleMatch[1].replace(/- AliExpress$/, '').trim() : null
-
-    const priceMatch = html.match(/["']price["']:\s*["']?([\d.]+)["']?/i)
-    const price = priceMatch ? parseFloat(priceMatch[1]) : null
-
-    return {
-      title: title || undefined,
-      price: price || undefined,
-    }
-  } catch (error) {
-    console.error('Error fetching AliExpress product:', error)
-    return null
-  }
-}
-
-interface Product {
-  title?: string
-  price?: number
 }
