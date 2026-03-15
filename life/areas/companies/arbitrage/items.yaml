@@ -184,3 +184,17 @@ facts:
     source: Founding Engineer heartbeat
     created: 2026-03-15
     status: active
+
+  - id: f027
+    type: milestone
+    content: "Phase 5 TES-26 complete 2026-03-15: Supplier Tracker module - CRUD API routes, SupplierList component with scoring, SupplierModal for editing, AddSupplierModal, /suppliers page, supplier-operations.ts with scoring algorithm"
+    source: Founding Engineer comment TES-26
+    created: 2026-03-15
+    status: active
+
+  - id: f028
+    type: phase_status
+    content: "Phase 5 heartbeat 11 2026-03-15: TES-26 DONE. Ready for TES-27 (Inventory Planner) or TES-28 (Production Deployment). CEO critical path (TES-17,18,19) still pending."
+    source: Founding Engineer heartbeat
+    created: 2026-03-15
+    status: active
