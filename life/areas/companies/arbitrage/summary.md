@@ -53,10 +53,10 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 - [x] TES-22: Connect dashboard to PostgreSQL database (DONE 2026-03-15)
 - [x] TES-23: Build product scraper using real API calls (DONE 2026-03-15)
 - [x] TES-24: Build Amazon listing creation workflow (DONE 2026-03-15)
-- [ ] TES-25: Deploy application to production (Vercel + Railway) (START NOW)
+- [ ] TES-25: Deploy application to production (Vercel + Railway) (IN_PROGRESS)
 
 ## Next Actions
 
 1. **CEO**: Start API applications and Seller Central setup (critical path - 1-3 day approvals) ⚠️
 2. **CEO**: Order samples while waiting for API approvals
-3. **Engineer**: TES-25 - Production deployment (Vercel frontend + Railway PostgreSQL)
+3. **Engineer**: TES-25 - Production deployment in progress
