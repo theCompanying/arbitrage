@@ -1,0 +1,6 @@
+id,title,category,aliexpress_url,aliexpress_price,amazon_price,estimated_margin,bsr,review_count,weight_lbs,status,notes
+1,Silicone Kitchen Utensil Set,Home & Kitchen,https://aliexpress.com/item/12345,8.50,29.99,32.5%,15420,342,1.5,RESEARCH,Sample demo product
+2,Resistance Bands Set,Sports,https://aliexpress.com/item/23456,4.20,19.99,28.3%,8230,128,0.8,EVALUATING,Sample demo product
+3,LED Desk Lamp,Home & Kitchen,https://aliexpress.com/item/34567,12.00,39.99,22.1%,25100,89,2.2,APPROVED,Sample demo product
+4,Bamboo Drawer Organizer,Home & Kitchen,https://aliexpress.com/item/45678,6.99,24.99,35.2%,5600,2100,1.8,LAUNCHED,Sample demo product
+5,Pet Hair Remover Roller,Pet Supplies,https://aliexpress.com/item/56789,3.99,16.99,30.1%,3200,4500,0.5,EVALUATING,Sample demo product
