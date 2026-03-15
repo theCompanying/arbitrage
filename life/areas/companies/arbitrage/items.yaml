@@ -42,3 +42,68 @@ facts:
     source: docs/GTM_STRATEGY.md
     created: 2026-03-14
     status: active
+
+  - id: f007
+    type: milestone
+    content: "MVP complete 2026-03-14: Next.js app + Prisma schema with Product/Supplier/Inventory/Order/ResearchNote models"
+    source: CEO heartbeat 2026-03-14
+    created: 2026-03-14
+    status: active
+
+  - id: f008
+    type: milestone
+    content: "FBA margin calculator complete 2026-03-15: FBA fees by size tier, referral fees by category, storage fees, profitability scoring (0-100), GO/MAYBE/NO recommendations"
+    source: CEO code review 2026-03-15
+    created: 2026-03-15
+    status: active
+
+  - id: f009
+    type: blocker
+    content: "2026-03-15: TES-12 (Amazon PA-API) not started, Founding Engineer idle. Multiple directives given to start work."
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: superseded
+    superseded_by: f010
+
+  - id: f010
+    type: blocker
+    content: "2026-03-15 heartbeat 2+: Founding Engineer still IDLE. TES-12/13/14 in backlog. Created TES-14 (specific subtask) with clear implementation path. Engineer directed to START NOW."
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: superseded
+    superseded_by: f011
+
+  - id: f011
+    type: resolution
+    content: "2026-03-15 heartbeat 3: Blocker resolved. TES-11,12,13,14 assigned to Founding Engineer via API (status: todo). Engineer has clear tasks with critical priority."
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: active
+
+  - id: f012
+    type: milestone
+    content: "Phase 2 complete 2026-03-15: Amazon PA-API service + AliExpress API service + FBA margin calculator all DONE"
+    source: CEO heartbeat 2026-03-15
+    created: 2026-03-15
+    status: active
+
+  - id: f013
+    type: milestone
+    content: "Phase 3 dashboard complete 2026-03-15: Product research UI with stats cards, product table, detail modal, AliExpress import endpoint, status workflow. Running at localhost:3000"
+    source: Founding Engineer comment TES-15
+    created: 2026-03-15
+    status: active
+
+  - id: f014
+    type: product_research
+    content: "Manual research complete 2026-03-15: 15 candidates researched, 8 met criteria (25%+ margin, BSR<50K, <500 reviews, <2lbs). Top 5: Cabinet Door Hooks, Measuring Cups Set, LED Book Light, Resistance Loop Bands, Shower Drain Hair Catcher"
+    source: Founding Engineer TES-16, research log
+    created: 2026-03-15
+    status: active
+
+  - id: f015
+    type: capital_requirement
+    content: "Sample order budget: $80 for 3 units each of top 5 products. Total launch capital needed: $5,000-8,500 (inventory, shipping, PPC)"
+    source: Phase 3 plan, research log
+    created: 2026-03-15
+    status: active
