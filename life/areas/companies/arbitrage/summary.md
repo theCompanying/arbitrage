@@ -50,10 +50,12 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 - [ ] TES-21: Set up LLC (optional, recommended)
 
 **Engineer Tasks:**
-- [ ] TES-22: Connect dashboard to PostgreSQL database
+- [x] TES-22: Connect dashboard to PostgreSQL database (DONE 2026-03-15)
+- [ ] TES-23: Build product scraper using real API calls (START NOW)
+- [ ] TES-24: Build Amazon listing creation workflow
 
 ## Next Actions
 
 1. **CEO**: Start API applications and Seller Central setup (critical path)
 2. **CEO**: Order samples while waiting for API approvals
-3. **Engineer**: Database integration - enables live product testing
+3. **Engineer**: TES-23 - Product scraper with real API integration
