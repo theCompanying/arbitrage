@@ -1,7 +1,10 @@
 {
   "framework": "nextjs",
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm build",
-  "devCommand": "pnpm dev",
-  "outputDirectory": ".next"
+  "buildCommand": "pnpm --filter @arbitrage/web build",
+  "outputDirectory": "apps/web/.next",
+  "regions": ["iad1"],
+  "env": {
+    "DATABASE_URL": "@database-url"
+  }
 }
