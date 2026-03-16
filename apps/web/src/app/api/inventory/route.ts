@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     const productId = searchParams.get('productId')
     const lowStock = searchParams.get('lowStock')
 
-    const where: any = {}
+    const where: { productId?: string } = {}
     if (productId) {
       where.productId = productId
     }
@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function calculateReorderPoint(inv: any): number {
+function calculateReorderPoint(inv: { sellableQuantity: number }): number {
   const avgDailySales = 5
   const leadTimeDays = 14
   const safetyStock = 10

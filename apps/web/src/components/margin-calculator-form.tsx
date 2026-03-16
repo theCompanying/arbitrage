@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { calculateMargin, calculateProfitabilityScore, getRecommendation } from '@/lib/margin-calculator'
+import { calculateMargin, calculateProfitabilityScore, getRecommendation, MarginCalculationResult, type Category } from '@/lib/margin-calculator'
 
 interface MarginCalculatorFormProps {
-  onCalculated?: (result: any) => void
+  onCalculated?: (result: MarginCalculationResult) => void
 }
 
 export default function MarginCalculatorForm({ onCalculated }: MarginCalculatorFormProps) {
@@ -19,7 +19,7 @@ export default function MarginCalculatorForm({ onCalculated }: MarginCalculatorF
     category: 'home_kitchen',
   })
   
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<MarginCalculationResult | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,7 +35,7 @@ export default function MarginCalculatorForm({ onCalculated }: MarginCalculatorF
         width: parseFloat(formData.width),
         height: parseFloat(formData.height),
         weight: parseFloat(formData.weight),
-        category: formData.category as any,
+        category: formData.category as Category,
       }
       
       // Validate
