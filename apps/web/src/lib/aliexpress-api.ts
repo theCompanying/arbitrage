@@ -242,23 +242,26 @@ export class AliExpressApiService {
     return hmac.digest('hex').toUpperCase()
   }
 
-  private parseSearchResponse(data: any): SearchResult {
-    const productList = data?.aliexpress_solution_product_search_response?.products || []
+  private parseSearchResponse(data: unknown): SearchResult {
+    const responseData = data as Record<string, unknown>
+    const searchResponse = responseData?.aliexpress_solution_product_search_response as Record<string, unknown> || {}
+    const productList = (searchResponse?.products as unknown[]) || []
 
     return {
-      products: productList.map((item: any) => this.parseProductItem(item)),
-      totalResults: data?.aliexpress_solution_product_search_response?.total_results || 0,
-      currentPage: data?.aliexpress_solution_product_search_response?.current_page || 1,
-      totalPages: data?.aliexpress_solution_product_search_response?.total_pages || 1,
+      products: productList.map((item) => this.parseProductItem(item as Record<string, unknown>)),
+      totalResults: (searchResponse?.total_results as number) || 0,
+      currentPage: (searchResponse?.current_page as number) || 1,
+      totalPages: (searchResponse?.total_pages as number) || 1,
     }
   }
 
-  private parseProductResponse(data: any): AliExpressProduct {
-    const product = data?.aliexpress_solution_product_detail_get_response || {}
+  private parseProductResponse(data: unknown): AliExpressProduct {
+    const responseData = data as Record<string, unknown>
+    const product = (responseData?.aliexpress_solution_product_detail_get_response as Record<string, unknown>) || {}
     return this.parseProductItem(product)
   }
 
-  private parseProductItem(item: any): AliExpressProduct {
+  private parseProductItem(item: Record<string, unknown>): AliExpressProduct {
     return {
       productId: item.product_id || 0,
       title: item.product_title || '',
@@ -296,12 +299,12 @@ export class AliExpressApiService {
       reviews: item.reviews || 0,
       moq: item.moq || 1,
       availableStock: item.available_stock,
-      variants: item.variants?.map((v: any) => ({
-        id: v.variant_id,
-        name: v.variant_name,
-        price: parseFloat(v.price),
-        stock: v.stock,
-        imageUrl: v.image_url,
+      variants: (item.variants as unknown[])?.map((v: Record<string, unknown>) => ({
+        id: v.variant_id as string,
+        name: v.variant_name as string,
+        price: parseFloat(v.price as string),
+        stock: v.stock as number,
+        imageUrl: v.image_url as string,
       })),
       description: item.description,
       specifications: item.specifications,
@@ -403,7 +406,7 @@ export class AliExpressApiService {
       positiveRating: parseFloat(sellerInfo.positive_rating) || 0,
       totalTransactions: sellerInfo.total_transactions || 0,
       yearsInBusiness: sellerInfo.years_in_business || 0,
-      topProducts: sellerInfo.top_products?.map((p: any) => this.parseProductItem(p)) || [],
+      topProducts: sellerInfo.top_products?.map((p: unknown) => this.parseProductItem(p as Record<string, unknown>)) || [],
     }
   }
 }

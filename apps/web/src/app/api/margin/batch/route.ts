@@ -49,20 +49,20 @@ export async function POST(request: NextRequest) {
     })
     
     // Calculate summary statistics
-    const validResults = results.filter((r: any) => r.calculation !== null)
+    const validResults = results.filter((r) => r.calculation !== null)
     const summary = {
       totalItems: body.items.length,
       validItems: validResults.length,
       errorItems: results.length - validResults.length,
       averageMargin: validResults.length > 0
-        ? validResults.reduce((acc: number, r: any) => acc + r.calculation.netMarginPercent, 0) / validResults.length
+        ? validResults.reduce((acc, r) => acc + r.calculation.netMarginPercent, 0) / validResults.length
         : 0,
       averageScore: validResults.length > 0
-        ? validResults.reduce((acc: number, r: any) => acc + r.profitabilityScore, 0) / validResults.length
+        ? validResults.reduce((acc, r) => acc + r.profitabilityScore, 0) / validResults.length
         : 0,
-      goCount: validResults.filter((r: any) => r.recommendation?.verdict === 'GO').length,
-      maybeCount: validResults.filter((r: any) => r.recommendation?.verdict === 'MAYBE').length,
-      noGoCount: validResults.filter((r: any) => r.recommendation?.verdict === 'NO_GO').length,
+      goCount: validResults.filter((r) => r.recommendation?.verdict === 'GO').length,
+      maybeCount: validResults.filter((r) => r.recommendation?.verdict === 'MAYBE').length,
+      noGoCount: validResults.filter((r) => r.recommendation?.verdict === 'NO_GO').length,
     }
     
     return NextResponse.json({

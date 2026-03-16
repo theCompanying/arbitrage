@@ -240,60 +240,79 @@ export class AmazonPaApiService {
     return hmac.digest('base64')
   }
 
-  private parseProductResponse(data: any, asin: string): ProductData {
-    const itemsResult = data.ItemsResult?.Items || []
-    const item = itemsResult[0] || {}
+  private parseProductResponse(data: unknown, asin: string): ProductData {
+    const responseData = data as Record<string, unknown>
+    const itemsResult = (responseData.ItemsResult as Record<string, unknown>)?.Items as unknown[] || []
+    const item = (itemsResult[0] as Record<string, unknown>) || {}
 
-    const priceInfo = item.Offers?.Summary?.LowestPrice || item.Offers?.Listings?.[0]?.Price
-    const listPriceInfo = item.Offers?.Listings?.[0]?.ListPrice
+    const offers = item.Offers as Record<string, unknown> | undefined
+    const itemInfo = item.ItemInfo as Record<string, unknown> | undefined
+    const images = item.Images as Record<string, unknown> | undefined
+    const customerReviews = item.CustomerReviews as Record<string, unknown> | undefined
+    const featureBullets = item.FeatureBullets as unknown[] | undefined
+    const ranks = item.Ranks as unknown[] | undefined
 
-    const dimensions = item.ItemInfo?.ProductInfo?.Dimensions
+    const summary = offers?.Summary as Record<string, unknown> | undefined
+    const listings = (offers?.Listings as unknown[])?.[0] as Record<string, unknown> | undefined
+    
+    const priceInfo = summary?.LowestPrice as Record<string, unknown> | undefined || listings?.Price as Record<string, unknown> | undefined
+    const listPriceInfo = listings?.ListPrice as Record<string, unknown> | undefined
+
+    const productInfo = itemInfo?.ProductInfo as Record<string, unknown> | undefined
+    const dimensions = productInfo?.Dimensions as Record<string, unknown> | undefined
     let parsedDimensions: ProductData['dimensions']
 
     if (dimensions) {
       parsedDimensions = {
-        unit: dimensions.Unit || 'inches',
+        unit: (dimensions.Unit as string) || 'inches',
       }
       
       if (dimensions.Length) {
-        parsedDimensions.length = dimensions.Length.DisplayUnits?.Value || dimensions.Length.Value
+        const length = dimensions.Length as Record<string, unknown>
+        parsedDimensions.length = (length.DisplayUnits as Record<string, unknown>)?.Value as string || length.Value as string
       }
       if (dimensions.Width) {
-        parsedDimensions.width = dimensions.Width.DisplayUnits?.Value || dimensions.Width.Value
+        const width = dimensions.Width as Record<string, unknown>
+        parsedDimensions.width = (width.DisplayUnits as Record<string, unknown>)?.Value as string || width.Value as string
       }
       if (dimensions.Height) {
-        parsedDimensions.height = dimensions.Height.DisplayUnits?.Value || dimensions.Height.Value
+        const height = dimensions.Height as Record<string, unknown>
+        parsedDimensions.height = (height.DisplayUnits as Record<string, unknown>)?.Value as string || height.Value as string
       }
       if (dimensions.Weight) {
-        parsedDimensions.weight = dimensions.Weight.DisplayUnits?.Value || dimensions.Weight.Value
+        const weight = dimensions.Weight as Record<string, unknown>
+        parsedDimensions.weight = (weight.DisplayUnits as Record<string, unknown>)?.Value as string || weight.Value as string
       }
     }
 
+    const variants = (images?.Variants as Record<string, unknown>)?.Medium as unknown[] | undefined
+    const bullets = featureBullets || []
+
     return {
       asin,
-      title: item.ItemInfo?.Title?.DisplayValue || item.ItemInfo?.Title?.Label || '',
-      brand: item.ItemInfo?.Brand?.DisplayValue,
-      mainImage: item.Images?.Primary?.Medium?.URL,
-      images: item.Images?.Variants?.Medium?.map((img: any) => img.URL),
+      title: (itemInfo?.Title as Record<string, unknown>)?.DisplayValue as string || (itemInfo?.Title as Record<string, unknown>)?.Label as string || '',
+      brand: (itemInfo?.Brand as Record<string, unknown>)?.DisplayValue as string,
+      mainImage: ((images?.Primary as Record<string, unknown>)?.Medium as Record<string, unknown>)?.URL as string,
+      images: variants?.map((img: unknown) => (img as Record<string, unknown>).URL as string),
       price: priceInfo ? {
-        amount: priceInfo.Amount || 0,
-        currency: priceInfo.Currency || 'USD',
-        displayAmount: priceInfo.DisplayAmount || `$${(priceInfo.Amount || 0) / 100}`,
+        amount: (priceInfo.Amount as number) || 0,
+        currency: (priceInfo.Currency as string) || 'USD',
+        displayAmount: (priceInfo.DisplayAmount as string) || `$${(priceInfo.Amount as number || 0) / 100}`,
       } : undefined,
       listPrice: listPriceInfo ? {
-        amount: listPriceInfo.Amount || 0,
-        currency: listPriceInfo.Currency || 'USD',
-        displayAmount: listPriceInfo.DisplayAmount || `$${(listPriceInfo.Amount || 0) / 100}`,
+        amount: (listPriceInfo.Amount as number) || 0,
+        currency: (listPriceInfo.Currency as string) || 'USD',
+        displayAmount: (listPriceInfo.DisplayAmount as string) || `$${(listPriceInfo.Amount as number || 0) / 100}`,
       } : undefined,
-      availability: item.Offers?.Listings?.[0]?.Availability?.Message,
-      isPrimeEligible: item.Offers?.Listings?.[0]?.PrimeInformation?.IsPrime,
-      rating: item.CustomerReviews?.StarRating,
-      ratingsTotal: item.CustomerReviews?.Count,
-      reviewsTotal: item.CustomerReviews?.Count,
-      featureBullets: item.FeatureBullets?.map((bullet: any) => bullet.DisplayValue),
-      description: item.ItemInfo?.Description?.DisplayValue,
-      category: item.ItemInfo?.Classifications?.Binding?.DisplayValue,
-      salesRank: item.Ranks?.SalesRank?.[0]?.Rank,
+      availability: (listings?.Availability as Record<string, unknown>)?.Message as string,
+      isPrimeEligible: (listings?.PrimeInformation as Record<string, unknown>)?.IsPrime as boolean,
+      rating: (customerReviews?.StarRating as number | undefined),
+      ratingsTotal: (customerReviews?.Count as number | undefined),
+      reviewsTotal: (customerReviews?.Count as number | undefined),
+      featureBullets: bullets.map((bullet: unknown) => (bullet as Record<string, unknown>).DisplayValue as string),
+      description: (itemInfo?.Description as Record<string, unknown>)?.DisplayValue as string,
+      category: ((itemInfo?.Classifications as Record<string, unknown>)?.Binding as Record<string, unknown>)?.DisplayValue as string,
+      salesRank: ((ranks?.[0] as Record<string, unknown>)?.Rank as number | undefined),
       dimensions: parsedDimensions,
     }
   }
@@ -323,7 +342,7 @@ export class AmazonPaApiService {
           asin,
           title: '',
           error: (error as Error).message,
-        } as any)
+        } as ProductResult)
       }
     }
 

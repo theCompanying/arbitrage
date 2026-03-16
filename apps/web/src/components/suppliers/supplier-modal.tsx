@@ -46,7 +46,7 @@ export default function SupplierModal({
     }
   }
 
-  const handleChange = (field: keyof Supplier, value: any) => {
+  const handleChange = (field: keyof Supplier, value: string | number | boolean | null) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 

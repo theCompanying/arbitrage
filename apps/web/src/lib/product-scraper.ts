@@ -35,7 +35,7 @@ export interface ImportResult {
 export class ProductScraperService {
   private amazonService?: AmazonPaApiService
   private aliexpressService?: AliExpressApiService
-  private cache: Map<string, { data: any; timestamp: number }> = new Map()
+  private cache: Map<string, { data: unknown; timestamp: number }> = new Map()
   private readonly CACHE_TTL_MS = 5 * 60 * 1000 // 5 minutes
 
   constructor() {
@@ -315,7 +315,7 @@ export class ProductScraperService {
     return cached.data as T
   }
 
-  private addToCache(key: string, data: any): void {
+  private addToCache<T>(key: string, data: T): void {
     this.cache.set(key, {
       data,
       timestamp: Date.now(),
