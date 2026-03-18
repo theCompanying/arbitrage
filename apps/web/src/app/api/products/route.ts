@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status')
     const search = searchParams.get('search')
 
-    const where: { status?: string; OR?: Array<{ title: { contains: string; mode: string }; category?: { contains: string; mode: string } }> } = {}
+    const where: any = {}
 
     if (status && status !== 'all') {
       where.status = status

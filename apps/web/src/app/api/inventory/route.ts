@@ -86,9 +86,9 @@ export async function POST(request: NextRequest) {
         sellableQuantity: sellableQuantity || 0,
         warehouseId,
         warehouseName,
-        unitCost: new Decimal(unitCost),
-        totalCost: new Decimal(totalCost),
-        shippingCost: shippingCost ? new Decimal(shippingCost) : null,
+        unitCost,
+        totalCost,
+        shippingCost,
         receivedAt: receivedAt ? new Date(receivedAt) : null,
       },
     })

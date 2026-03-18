@@ -64,9 +64,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
         sellableQuantity,
         warehouseId,
         warehouseName,
-        unitCost: unitCost ? new Decimal(unitCost) : undefined,
-        totalCost: totalCost ? new Decimal(totalCost) : undefined,
-        shippingCost: shippingCost ? new Decimal(shippingCost) : undefined,
+        unitCost,
+        totalCost,
+        shippingCost,
         receivedAt: receivedAt ? new Date(receivedAt) : undefined,
       },
     })

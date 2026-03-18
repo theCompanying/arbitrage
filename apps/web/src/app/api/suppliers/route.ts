@@ -8,13 +8,13 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '50')
     const cursor = searchParams.get('cursor')
 
-    const where: { status?: string } = {}
+    const where: any = {}
     if (status) {
       where.status = status
     }
 
     const suppliers = await prisma.supplier.findMany({
-      where,
+      where: Object.keys(where).length > 0 ? where : undefined,
       take: limit,
       ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
       include: {
@@ -80,9 +80,9 @@ export async function POST(request: NextRequest) {
         aliexpressUrl,
         contactEmail,
         contactName,
-        rating: rating ? new Decimal(rating) : null,
+        rating,
         yearsInBusiness,
-        responseRate: responseRate ? new Decimal(responseRate) : null,
+        responseRate,
         responseTime,
         moq,
         leadTimeDays,
