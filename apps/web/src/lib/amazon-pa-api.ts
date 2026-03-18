@@ -269,19 +269,19 @@ export class AmazonPaApiService {
       
       if (dimensions.Length) {
         const length = dimensions.Length as Record<string, unknown>
-        parsedDimensions.length = (length.DisplayUnits as Record<string, unknown>)?.Value as string || length.Value as string
+        parsedDimensions.length = parseFloat((length.DisplayUnits as Record<string, unknown>)?.Value as string || length.Value as string) || 0
       }
       if (dimensions.Width) {
         const width = dimensions.Width as Record<string, unknown>
-        parsedDimensions.width = (width.DisplayUnits as Record<string, unknown>)?.Value as string || width.Value as string
+        parsedDimensions.width = parseFloat((width.DisplayUnits as Record<string, unknown>)?.Value as string || width.Value as string) || 0
       }
       if (dimensions.Height) {
         const height = dimensions.Height as Record<string, unknown>
-        parsedDimensions.height = (height.DisplayUnits as Record<string, unknown>)?.Value as string || height.Value as string
+        parsedDimensions.height = parseFloat((height.DisplayUnits as Record<string, unknown>)?.Value as string || height.Value as string) || 0
       }
       if (dimensions.Weight) {
         const weight = dimensions.Weight as Record<string, unknown>
-        parsedDimensions.weight = (weight.DisplayUnits as Record<string, unknown>)?.Value as string || weight.Value as string
+        parsedDimensions.weight = parseFloat((weight.DisplayUnits as Record<string, unknown>)?.Value as string || weight.Value as string) || 0
       }
     }
 
@@ -340,9 +340,8 @@ export class AmazonPaApiService {
         console.error(`Failed to fetch product ${asin}:`, error)
         results.push({
           asin,
-          title: '',
-          error: (error as Error).message,
-        } as ProductResult)
+          title: `Error: ${(error as Error).message}`,
+        })
       }
     }
 

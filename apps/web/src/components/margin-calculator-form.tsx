@@ -39,7 +39,7 @@ export default function MarginCalculatorForm({ onCalculated }: MarginCalculatorF
       }
       
       // Validate
-      if (Object.values(input).some(v => isNaN(v as number) || v < 0)) {
+      if (Object.values(input).some(v => isNaN(Number(v)) || Number(v) < 0)) {
         setError('All values must be non-negative numbers')
         return
       }
@@ -48,15 +48,8 @@ export default function MarginCalculatorForm({ onCalculated }: MarginCalculatorF
       const score = calculateProfitabilityScore(calculation)
       const recommendation = getRecommendation(calculation)
       
-      const calculationResult = {
-        input,
-        calculation,
-        profitabilityScore: score,
-        recommendation,
-      }
-      
-      setResult(calculationResult)
-      onCalculated?.(calculationResult)
+      setResult(calculation)
+      onCalculated?.(calculation)
     } catch (err) {
       setError('Failed to calculate margin')
     }
@@ -219,50 +212,50 @@ export default function MarginCalculatorForm({ onCalculated }: MarginCalculatorF
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="p-3 bg-gray-50 rounded">
               <div className="text-sm text-gray-600">Net Margin</div>
-              <div className={`text-2xl font-bold ${result.calculation.netMarginPercent >= 25 ? 'text-green-600' : result.calculation.netMarginPercent >= 15 ? 'text-yellow-600' : 'text-red-600'}`}>
-                {result.calculation.netMarginPercent.toFixed(1)}%
+              <div className={`text-2xl font-bold ${result.netMarginPercent >= 25 ? 'text-green-600' : result.netMarginPercent >= 15 ? 'text-yellow-600' : 'text-red-600'}`}>
+                {result.netMarginPercent.toFixed(1)}%
               </div>
             </div>
             
             <div className="p-3 bg-gray-50 rounded">
               <div className="text-sm text-gray-600">Net Profit</div>
               <div className="text-2xl font-bold text-gray-900">
-                ${result.calculation.netProfit.toFixed(2)}
+                ${result.netProfit.toFixed(2)}
               </div>
             </div>
             
             <div className="p-3 bg-gray-50 rounded">
               <div className="text-sm text-gray-600">Profitability Score</div>
-              <div className={`text-2xl font-bold ${result.profitabilityScore >= 70 ? 'text-green-600' : result.profitabilityScore >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
-                {result.profitabilityScore}/100
+              <div className={`text-2xl font-bold ${calculateProfitabilityScore(result) >= 70 ? 'text-green-600' : calculateProfitabilityScore(result) >= 40 ? 'text-yellow-600' : 'text-red-600'}`}>
+                {calculateProfitabilityScore(result)}/100
               </div>
             </div>
           </div>
           
           <div className="p-3 bg-gray-50 rounded mb-4">
             <div className="text-sm text-gray-600 mb-1">Recommendation</div>
-            <div className={`font-semibold ${result.recommendation.verdict === 'GO' ? 'text-green-600' : result.recommendation.verdict === 'MAYBE' ? 'text-yellow-600' : 'text-red-600'}`}>
-              {result.recommendation.verdict}
+            <div className={`font-semibold ${getRecommendation(result).verdict === 'GO' ? 'text-green-600' : getRecommendation(result).verdict === 'MAYBE' ? 'text-yellow-600' : 'text-red-600'}`}>
+              {getRecommendation(result).verdict}
             </div>
-            <div className="text-sm text-gray-600 mt-1">{result.recommendation.reason}</div>
+            <div className="text-sm text-gray-600 mt-1">{getRecommendation(result).reason}</div>
           </div>
           
           <div className="text-sm text-gray-600">
             <div className="flex justify-between py-1 border-b">
               <span>FBA Fulfillment Fee</span>
-              <span>${result.calculation.fbaFulfillmentFee.toFixed(2)}</span>
+              <span>${result.fbaFulfillmentFee.toFixed(2)}</span>
             </div>
             <div className="flex justify-between py-1 border-b">
               <span>Referral Fee</span>
-              <span>${result.calculation.referralFee.toFixed(2)}</span>
+              <span>${result.referralFee.toFixed(2)}</span>
             </div>
             <div className="flex justify-between py-1 border-b">
               <span>Break-even Price</span>
-              <span>${result.calculation.breakEvenPrice.toFixed(2)}</span>
+              <span>${result.breakEvenPrice.toFixed(2)}</span>
             </div>
             <div className="flex justify-between py-1">
               <span>ROI</span>
-              <span>{result.calculation.roi.toFixed(0)}%</span>
+              <span>{result.roi.toFixed(0)}%</span>
             </div>
           </div>
         </div>
