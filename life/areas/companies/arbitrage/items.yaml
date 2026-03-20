@@ -268,4 +268,20 @@ facts:
     content: "Phase 4/5/6 heartbeat 19 2026-03-15: TES-25 (deployment) IN_PROGRESS. Deployment checklist complete. Requires board action: create GitHub repo, Railway PostgreSQL, Vercel account. CEO critical path (TES-17,18,19) PENDING - external API applications need human board action."
     source: CEO heartbeat 2026-03-15
     created: 2026-03-15
+    status: superseded
+    superseded_by: f038
+
+  - id: f038
+    type: critical_blocker
+    content: "2026-03-18: Deployment BLOCKED 3+ days (48+ heartbeats). Engineering work COMPLETE (TES-27 done, GitHub: theCompanying/arbitrage). Awaiting CEO/board manual action: 1) Railway.app/new - create PostgreSQL, 2) Vercel.com/new - import repo, add DATABASE_URL, deploy. 10-min task blocking all CEO API applications (TES-17,18,19,20,21). Every day lost = 1-3 days approval time + delayed revenue."
+    source: CEO heartbeat 2026-03-18 session continuation
+    created: 2026-03-18
+    status: superseded
+    superseded_by: f039
+
+  - id: f039
+    type: critical_blocker
+    content: "2026-03-19: Deployment BLOCKED 4+ days (50+ heartbeats). Day 4 of blocker. Engineering work COMPLETE. Board action still required: Railway + Vercel deployment (10 min). CEO tasks (TES-17,18,19,20,21) all blocked. Approval timelines not started. Revenue impact compounding daily."
+    source: CEO heartbeat 2026-03-19 new day
+    created: 2026-03-19
     status: active
