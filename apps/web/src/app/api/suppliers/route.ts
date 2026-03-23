@@ -1,17 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@arbitrage/database'
+import { prisma, Prisma } from '@arbitrage/database'
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
-    const status = searchParams.get('status')
     const limit = parseInt(searchParams.get('limit') || '50')
     const cursor = searchParams.get('cursor')
 
-    const where: any = {}
-    if (status) {
-      where.status = status
-    }
+    const where: Prisma.SupplierWhereInput = {}
 
     const suppliers = await prisma.supplier.findMany({
       where: Object.keys(where).length > 0 ? where : undefined,

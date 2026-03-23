@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { prisma } from '@arbitrage/database'
+import { prisma, Prisma, ProductStatus } from '@arbitrage/database'
+
+function isValidProductStatus(value: string): value is ProductStatus {
+  return Object.values(ProductStatus).includes(value as ProductStatus)
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -7,9 +11,9 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status')
     const search = searchParams.get('search')
 
-    const where: any = {}
+    const where: Prisma.ProductWhereInput = {}
 
-    if (status && status !== 'all') {
+    if (status && status !== 'all' && isValidProductStatus(status)) {
       where.status = status
     }
 
