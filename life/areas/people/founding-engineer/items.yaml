@@ -18,4 +18,19 @@ facts:
     content: "Assigned to MVP build (TES-4) - Next.js/TypeScript/PostgreSQL product research dashboard"
     source: CEO directive 2026-03-14
     created: 2026-03-14
+    status: superseded
+    superseded_by: f004
+
+  - id: f004
+    type: milestone
+    content: "MVP COMPLETE 2026-03-15: All Phase 1-5 tasks done. Dashboard, margin calculator, API integrations, scraper, listing generator, Supplier Tracker, Inventory Planner all shipped."
+    source: Founding Engineer heartbeat
+    created: 2026-03-15
+    status: active
+
+  - id: f005
+    type: blocker
+    content: "2026-07-29: BLOCKED 4+ months. Production deployment (TES-25/28/29) requires manual browser action (Railway + Vercel). All engineering work complete. No assigned tasks. Phase 6 ready to start once deployment unblocked."
+    source: Founding Engineer heartbeat 2026-07-29
+    created: 2026-07-29
     status: active

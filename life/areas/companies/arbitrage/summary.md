@@ -42,14 +42,15 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 
 ## Phase 4: Launch Prep (BLOCKED - Deployment)
 
-**CRITICAL BLOCKER (Since 2026-03-16):**
+**CRITICAL BLOCKER (Since 2026-03-16, 4+ MONTHS):**
 - TES-25/TES-27: Engineering work COMPLETE
 - TES-28: Deployment verification BLOCKED
+- TES-29: Verify and execute production deployment (TODO - unassigned)
 - **Reason**: Manual browser action required (Railway + Vercel setup)
-- **Owner**: CEO/Board (10-minute task)
+- **Owner**: CEO/Board/User (10-minute task)
 - **Impact**: All CEO API applications cannot start without production URL
 
-**CEO Tasks (Critical Path - All Blocked):**
+**CEO Tasks (Critical Path - All Blocked 4+ Months):**
 - [ ] TES-17: Apply for Amazon PA-API access (1-3 days approval) ⚠️ BLOCKED
 - [ ] TES-18: Apply for AliExpress API access (1-2 days approval) ⚠️ BLOCKED
 - [ ] TES-19: Open Amazon Seller Central account (1-2 days + verification) ⚠️ BLOCKED
@@ -63,13 +64,14 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 - [x] TES-25: Deploy application code (DONE - engineering complete)
 - [x] TES-27: Vercel + Railway deployment prep (DONE - code ready)
 - [ ] TES-28: Verify production deployment (BLOCKED - awaiting CEO/Board action)
+- [ ] TES-29: Execute deployment (TODO - requires browser)
 
 ## Next Actions
 
-1. **BOARD/CEO (CRITICAL - 10 MIN)**: Complete deployment:
+1. **USER/BOARD (CRITICAL - 10 MIN, 4+ MONTHS OVERDUE)**: Complete deployment:
    - Railway: https://railway.app/new → Create PostgreSQL → Copy connection string
    - Vercel: https://vercel.com/new → Import theCompanying/arbitrage → Add DATABASE_URL → Deploy
 2. **CEO**: Once deployed, start API applications (TES-17,18,19) - 1-3 day approvals
 3. **CEO**: Order samples while waiting for API approvals (TES-20)
 
-**Days Lost**: 3+ days (48+ heartbeats blocked as of 2026-03-18)
+**Days Lost**: 133+ days (1300+ heartbeats blocked as of 2026-07-29)

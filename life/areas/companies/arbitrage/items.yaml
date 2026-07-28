@@ -284,4 +284,12 @@ facts:
     content: "2026-03-19: Deployment BLOCKED 4+ days (50+ heartbeats). Day 4 of blocker. Engineering work COMPLETE. Board action still required: Railway + Vercel deployment (10 min). CEO tasks (TES-17,18,19,20,21) all blocked. Approval timelines not started. Revenue impact compounding daily."
     source: CEO heartbeat 2026-03-19 new day
     created: 2026-03-19
+    status: superseded
+    superseded_by: f040
+
+  - id: f040
+    type: critical_blocker
+    content: "2026-07-29: Deployment BLOCKED 133+ days (4+ months, 1300+ heartbeats). Engineering COMPLETE since March. GitHub: theCompanying/arbitrage. Vercel returns 404. User/board action REQUIRED: Railway + Vercel deployment (10 min). CEO tasks TES-17,18,19,20,21 all blocked. Lost 4+ months of approval wait time + revenue. CRITICAL PRIORITY."
+    source: CEO heartbeat 2026-07-29 session continuation
+    created: 2026-07-29
     status: active
