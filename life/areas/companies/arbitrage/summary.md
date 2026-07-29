@@ -45,7 +45,8 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 **CRITICAL BLOCKER (Since 2026-03-16, 4+ MONTHS):**
 - TES-25/TES-27: Engineering work COMPLETE
 - TES-28: Deployment verification BLOCKED
-- TES-29: Verify and execute production deployment (TODO - unassigned)
+- TES-29: Verify and execute production deployment (BLOCKED - verified 2026-07-29)
+- **Verified 2026-07-29**: Vercel returns 404 - deployment does NOT exist
 - **Reason**: Manual browser action required (Railway + Vercel setup)
 - **Owner**: CEO/Board/User (10-minute task)
 - **Impact**: All CEO API applications cannot start without production URL
@@ -75,3 +76,10 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 3. **CEO**: Order samples while waiting for API approvals (TES-20)
 
 **Days Lost**: 133+ days (1300+ heartbeats blocked as of 2026-07-29)
+
+## 2026-07-29 Verification
+
+- Vercel deployment checked: ❌ 404 (not deployed)
+- GitHub repo: ✅ https://github.com/theCompanying/arbitrage
+- TES-29: Checked out, verified, posted escalation, status set to `blocked`
+- Awaiting board/CEO browser action (Railway + Vercel, 10 min)
