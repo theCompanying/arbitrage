@@ -41,4 +41,20 @@ facts:
     content: "2026-08-01: BLOCKED 136+ days. CEO session confirmed deployment still not executed. Paperclip API not running. All documentation prepared (DEPLOYMENT_RUNBOOK.md, execution plan). Awaiting human browser action - 10 min to unblock entire company."
     source: CEO heartbeat 2026-08-01
     created: 2026-08-01
+    status: superseded
+    superseded_by: f007
+
+  - id: f007
+    type: blocker
+    content: "2026-08-01T02:46: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404 DEPLOYMENT_NOT_FOUND. Paperclip API still down. Blocker unchanged. Still IDLE awaiting deployment unblock."
+    source: CEO heartbeat verification 2026-08-01T02:46
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f008
+
+  - id: f008
+    type: blocker
+    content: "2026-08-01T03:48: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged. Still IDLE."
+    source: CEO heartbeat verification 2026-08-01T03:48
+    created: 2026-08-01
     status: active
