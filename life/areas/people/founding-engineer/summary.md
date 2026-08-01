@@ -8,7 +8,7 @@ First engineering hire. Reports to CEO. Owns architecture and ships features end
 
 - **Role**: Founding Engineer
 - **Reports to**: CEO (3aa05967-67ae-4c3a-b78b-18135c45e7a5)
-- **Status**: BLOCKED (as of 2026-07-29) - Deployment blocker 4+ months
+- **Status**: BLOCKED (as of 2026-08-01) - Deployment blocker 136+ days
 - **Capabilities**: Builds core product, owns architecture, ships features end-to-end
 
 ## Current Focus

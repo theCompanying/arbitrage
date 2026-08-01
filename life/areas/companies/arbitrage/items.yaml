@@ -292,4 +292,12 @@ facts:
     content: "2026-07-29: Deployment BLOCKED 133+ days (4+ months, 1300+ heartbeats). Engineering COMPLETE since March. GitHub: theCompanying/arbitrage. Vercel returns 404. User/board action REQUIRED: Railway + Vercel deployment (10 min). CEO tasks TES-17,18,19,20,21 all blocked. Lost 4+ months of approval wait time + revenue. CRITICAL PRIORITY."
     source: CEO heartbeat 2026-07-29 session continuation
     created: 2026-07-29
+    status: superseded
+    superseded_by: f041
+
+  - id: f041
+    type: critical_blocker
+    content: "2026-08-01: Deployment BLOCKED 136+ days. CEO session via issue_comment_mentioned. Paperclip API not running (localhost:8080 connection refused). All documentation prepared: DEPLOYMENT_RUNBOOK.md, execution plan. Awaiting human browser action - Railway + Vercel (10 min) to unblock entire company. Next wake: verify deployment, begin API applications."
+    source: CEO heartbeat 2026-08-01
+    created: 2026-08-01
     status: active
