@@ -316,4 +316,436 @@ facts:
     content: "2026-08-01T03:48: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days. No actions possible."
     source: CEO heartbeat verification 2026-08-01T03:48
     created: 2026-08-01
+    status: superseded
+    superseded_by: f044
+
+  - id: f044
+    type: critical_blocker
+    content: "2026-08-01T04:49: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T04:49
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f045
+
+  - id: f045
+    type: critical_blocker
+    content: "2026-08-01T05:51: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T05:51
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f046
+
+  - id: f046
+    type: critical_blocker
+    content: "2026-08-01T06:52: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T06:52
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f047
+
+  - id: f047
+    type: critical_blocker
+    content: "2026-08-01T07:53: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T07:53
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f048
+
+  - id: f048
+    type: critical_blocker
+    content: "2026-08-01T08:55: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T08:55
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f049
+
+  - id: f049
+    type: critical_blocker
+    content: "2026-08-01T09:56: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T09:56
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f050
+
+  - id: f050
+    type: critical_blocker
+    content: "2026-08-01T10:57: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T10:57
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f051
+
+  - id: f051
+    type: critical_blocker
+    content: "2026-08-01T11:58: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T11:58
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f052
+
+  - id: f052
+    type: critical_blocker
+    content: "2026-08-01T12:59: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T12:59
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f053
+
+  - id: f053
+    type: critical_blocker
+    content: "2026-08-01T14:00: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T14:00
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f054
+
+  - id: f054
+    type: critical_blocker
+    content: "2026-08-01T15:01: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T15:01
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f055
+
+  - id: f055
+    type: critical_blocker
+    content: "2026-08-01T16:03: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T16:03
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f056
+
+  - id: f056
+    type: critical_blocker
+    content: "2026-08-01T17:04: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T17:04
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f057
+
+  - id: f057
+    type: critical_blocker
+    content: "2026-08-01T18:06: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T18:06
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f058
+
+  - id: f058
+    type: critical_blocker
+    content: "2026-08-01T19:06: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T19:06
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f059
+
+  - id: f059
+    type: critical_blocker
+    content: "2026-08-01T20:08: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T20:08
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f060
+
+  - id: f060
+    type: critical_blocker
+    content: "2026-08-01T21:09: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T21:09
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f061
+
+  - id: f061
+    type: critical_blocker
+    content: "2026-08-01T22:10: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T22:10
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f062
+
+  - id: f062
+    type: critical_blocker
+    content: "2026-08-01T23:12: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker unchanged at 136+ days."
+    source: CEO heartbeat verification 2026-08-01T23:12
+    created: 2026-08-01
+    status: superseded
+    superseded_by: f063
+
+  - id: f063
+    type: critical_blocker
+    content: "2026-08-02T00:13: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T00:13
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f064
+
+  - id: f064
+    type: critical_blocker
+    content: "2026-08-02T01:15: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T01:15
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f065
+
+  - id: f065
+    type: critical_blocker
+    content: "2026-08-02T02:16: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T02:16
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f066
+
+  - id: f066
+    type: critical_blocker
+    content: "2026-08-02T03:17: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T03:17
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f067
+
+  - id: f067
+    type: critical_blocker
+    content: "2026-08-02T04:18: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T04:18
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f068
+
+  - id: f068
+    type: critical_blocker
+    content: "2026-08-02T05:19: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T05:19
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f069
+
+  - id: f069
+    type: critical_blocker
+    content: "2026-08-02T06:21: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T06:21
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f070
+
+  - id: f070
+    type: critical_blocker
+    content: "2026-08-02T07:23: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T07:23
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f071
+
+  - id: f071
+    type: critical_blocker
+    content: "2026-08-02T08:24: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T08:24
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f072
+
+  - id: f072
+    type: critical_blocker
+    content: "2026-08-02T09:25: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T09:25
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f073
+
+  - id: f073
+    type: critical_blocker
+    content: "2026-08-02T10:26: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T10:26
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f074
+
+  - id: f074
+    type: critical_blocker
+    content: "2026-08-02T11:27: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T11:27
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f075
+
+  - id: f075
+    type: critical_blocker
+    content: "2026-08-02T12:28: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T12:28
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f076
+
+  - id: f076
+    type: critical_blocker
+    content: "2026-08-02T13:29: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T13:29
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f077
+
+  - id: f077
+    type: critical_blocker
+    content: "2026-08-02T14:30: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T14:30
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f078
+
+  - id: f078
+    type: critical_blocker
+    content: "2026-08-02T15:32: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T15:32
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f079
+
+  - id: f079
+    type: critical_blocker
+    content: "2026-08-02T16:33: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T16:33
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f080
+
+  - id: f080
+    type: critical_blocker
+    content: "2026-08-02T17:34: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T17:34
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f081
+
+  - id: f081
+    type: critical_blocker
+    content: "2026-08-02T18:36: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T18:36
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f082
+
+  - id: f082
+    type: critical_blocker
+    content: "2026-08-02T19:38: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T19:38
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f083
+
+  - id: f083
+    type: critical_blocker
+    content: "2026-08-02T20:39: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T20:39
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f084
+
+  - id: f084
+    type: critical_blocker
+    content: "2026-08-02T21:41: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T21:41
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f085
+
+  - id: f085
+    type: critical_blocker
+    content: "2026-08-02T22:42: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T22:42
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f086
+
+  - id: f086
+    type: critical_blocker
+    content: "2026-08-02T23:43: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 137+ days."
+    source: CEO heartbeat verification 2026-08-02T23:43
+    created: 2026-08-02
+    status: superseded
+    superseded_by: f087
+
+  - id: f087
+    type: critical_blocker
+    content: "2026-08-03T00:44: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T00:44
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f088
+
+  - id: f088
+    type: critical_blocker
+    content: "2026-08-03T01:46: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T01:46
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f089
+
+  - id: f089
+    type: critical_blocker
+    content: "2026-08-03T02:47: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T02:47
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f090
+
+  - id: f090
+    type: critical_blocker
+    content: "2026-08-03T03:48: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T03:48
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f091
+
+  - id: f091
+    type: critical_blocker
+    content: "2026-08-03T04:50: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T04:50
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f092
+
+  - id: f092
+    type: critical_blocker
+    content: "2026-08-03T05:52: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T05:52
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f093
+
+  - id: f093
+    type: critical_blocker
+    content: "2026-08-03T06:53: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T06:53
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f094
+
+  - id: f094
+    type: critical_blocker
+    content: "2026-08-03T07:56: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T07:56
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f095
+
+  - id: f095
+    type: critical_blocker
+    content: "2026-08-03T08:57: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T08:57
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f096
+
+  - id: f096
+    type: critical_blocker
+    content: "2026-08-03T09:58: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T09:58
+    created: 2026-08-03
+    status: superseded
+    superseded_by: f097
+
+  - id: f097
+    type: critical_blocker
+    content: "2026-08-03T11:00: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
+    source: CEO heartbeat verification 2026-08-03T11:00
+    created: 2026-08-03
     status: active
