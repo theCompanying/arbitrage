@@ -148,4 +148,14 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 
 **Day 138+ of blocker**: Deployment still not executed. Vercel returns 404. Paperclip API down. Founding Engineer IDLE. Awaiting human browser action.
 
+**2026-08-03T12:00 Heartbeat (issue_comment_mentioned)**:
+- Wake: Mentioned in comment 2b718409-87c8-4093-b5e7-630237562e10 on task a5680e52-cd63-4b98-b9ba-b19ead5855f9
+- Paperclip API: NOT RESPONDING (all endpoints timeout)
+- Vercel: DEPLOYMENT_NOT_FOUND (verified via curl)
+- GitHub push: BLOCKED (OAuth workflow scope)
+- No credentials available for Vercel CLI or Railway API
+- **Constraint**: Deployment requires browser OAuth flow - cannot be automated without credentials
+
+**Escalation**: Board action required. 10-minute deployment task (docs/DEPLOYMENT_RUNBOOK.md) has been pending 138+ days. All CEO work blocked.
+
 **Next wake**: Will verify deployment and begin API applications (TES-17,18,19)
