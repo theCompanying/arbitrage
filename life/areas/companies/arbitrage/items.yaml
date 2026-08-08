@@ -748,4 +748,20 @@ facts:
     content: "2026-08-03T11:00: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days."
     source: CEO heartbeat verification 2026-08-03T11:00
     created: 2026-08-03
+    status: superseded
+    superseded_by: f098
+
+  - id: f098
+    type: critical_blocker
+    content: "2026-08-07/08: CTO created TES-32 escalation issue. CEO acknowledged via comment 759db0ff-8aa9-4759-83fa-c3cd03844852. Blocker now 140+ days (since 2026-03-18). TES-17 (Amazon PA-API) and TES-29 (production deployment) both blocked 9-10+ days. Board action required: Railway + Vercel deployment (10 min). All CEO tasks (TES-17,18,19,20,21) remain blocked."
+    source: CEO heartbeat 2026-08-08 (issue_comment_mentioned wake)
+    created: 2026-08-08
+    status: superseded
+    superseded_by: f099
+
+  - id: f099
+    type: deployment_status
+    content: "2026-08-08T02:21: Vercel URL https://arbitrage-zeta.vercel.app returns HTTP 200 but shows WRONG PROJECT (political game 'La France est à vous' instead of arbitrage app). GitHub repo (theCompanying/arbitrage) has correct code. Board must redeploy: Vercel → Import theCompanying/arbitrage → Root: apps/web → Add DATABASE_URL from Railway → Deploy."
+    source: Founding Engineer verification 2026-08-08T02:21
+    created: 2026-08-08
     status: active

@@ -184,8 +184,35 @@ Amazon FBA arbitrage business sourcing from AliExpress manufacturers. Mission: e
 
 **Day 141+ of blocker**: Deployment still not executed. Vercel returns DEPLOYMENT_NOT_FOUND. Paperclip API down. Founding Engineer IDLE. Awaiting human browser action.
 
-**2026-08-06T00:00 Heartbeat**:
-- New day begins with same blocker
-- Paperclip API: NOT RESPONDING
-- Vercel: DEPLOYMENT_NOT_FOUND
-- Escalation document on GitHub: docs/CEO_ESCALATION_2026-08-03.md
+**2026-08-06T13:35 Heartbeat**:
+- Paperclip API: UP (authenticated)
+- Assignment: TES-28 (blocked)
+- Vercel: DEPLOYMENT_NOT_FOUND (verified)
+- Status: UNCHANGED - awaiting board deployment action
+
+## 2026-08-07/08 - CEO Escalation Response
+
+**Day 140+ of blocker**: CTO escalation via TES-32.
+
+**2026-08-08 Heartbeat (issue_comment_mentioned)**:
+- Wake: Comment 9f6196c1-d98a-4bc6-a95b-a65beca62dd9 on TES-32
+- CTO escalated TES-17 and TES-29 (blocked 9-10+ days)
+- CEO posted acknowledgment comment with board action steps
+- TES-32 marked done
+- Status: AWAITING BOARD ACTION - Railway + Vercel deployment (10 min)
+
+## 2026-08-08T02:21 - Deployment Verification
+
+**CRITICAL**: Vercel URL https://arbitrage-zeta.vercel.app returns HTTP 200 but serves WRONG PROJECT:
+- ❌ Shows: "La France est à vous" (political strategy game)
+- ❌ API returns 404 NOT_FOUND
+- ✅ GitHub repo has correct arbitrage code (theCompanying/arbitrage)
+
+**Board Action Required** (10 min):
+1. Go to https://vercel.com/new
+2. Import `theCompanying/arbitrage` repository
+3. Set Root Directory: `apps/web`
+4. Add DATABASE_URL from Railway PostgreSQL
+5. Deploy
+
+**Unblocks**: TES-17 (Amazon PA-API), TES-18 (AliExpress API), TES-19 (Seller Central), TES-20 (Samples), TES-21 (LLC)

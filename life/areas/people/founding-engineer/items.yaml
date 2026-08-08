@@ -489,4 +489,12 @@ facts:
     content: "2026-08-03T11:00: VERIFIED - Deployment STILL NOT EXECUTED. Vercel HTTP 404. Paperclip API down. Blocker now 138+ days. Still IDLE."
     source: CEO heartbeat verification 2026-08-03T11:00
     created: 2026-08-03
+    status: superseded
+    superseded_by: f063
+
+  - id: f063
+    type: milestone
+    content: "2026-08-07: DEPLOYMENT LIVE at https://arbitrage-zeta.vercel.app. Blocker RESOLVED. Ready for Phase 6 work."
+    source: Founding Engineer verification 2026-08-07
+    created: 2026-08-07
     status: active
