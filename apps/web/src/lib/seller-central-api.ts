@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@arbitrage/database';
 
 export interface SellerCentralConfig {
   lwaClientId: string;
@@ -105,7 +103,7 @@ export class SellerCentralApiService {
       },
     });
 
-    return this.accessToken;
+    return this.accessToken!;
   }
 
   async makeRequest<T>(options: {
@@ -163,7 +161,7 @@ export class SellerCentralApiService {
       let orders = ordersData.orders || [];
 
       while (ordersData.nextToken) {
-        const nextData = await this.makeRequest({
+        const nextData = await this.makeRequest<{ orders: any[]; nextToken?: string }>({
           resource: '/orders/v0/orders',
           query: { NextToken: ordersData.nextToken },
         });
@@ -292,7 +290,7 @@ export class SellerCentralApiService {
   async downloadReport(reportId: string): Promise<any> {
     try {
       const report = await prisma.amazonReport.findUnique({
-        where: { reportId },
+        where: { id: reportId },
       });
 
       if (!report?.documentId) {
@@ -319,7 +317,7 @@ export class SellerCentralApiService {
       return { csvText, reportId };
     } catch (error) {
       await prisma.amazonReport.update({
-        where: { reportId },
+        where: { id: reportId },
         data: { status: 'FAILED' },
       });
       throw error;

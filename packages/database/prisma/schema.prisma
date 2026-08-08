@@ -46,6 +46,7 @@ model Product {
   inventory         Inventory[]
   orders            Order[]
   researchNotes     ResearchNote[]
+  discoveryResults  DiscoveryResult[]
 }
 
 enum ProductStatus {
@@ -287,4 +288,78 @@ enum ReportStatus {
   IN_PROGRESS
   COMPLETED
   FAILED
+}
+
+/// Automated product discovery rules
+model DiscoveryRule {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  
+  // Criteria
+  minMargin   Decimal? @db.Decimal(5, 2) // Percentage
+  maxBsr      Int?     // Maximum Best Seller Rank
+  maxReviews  Int?     // Maximum review count
+  minRating   Decimal? @db.Decimal(3, 2)
+  priceRange  Json?    // { min: number, max: number }
+  categories  String[] // Target categories
+  keywords    String[] // Keywords to include
+  excludeKeywords String[] // Keywords to exclude
+  
+  // Scheduling
+  enabled     Boolean  @default(true)
+  scanFrequency String @default("daily") // hourly, daily, weekly
+  lastScanAt  DateTime?
+  nextScanAt  DateTime?
+  
+  // Results tracking
+  productsFound Int    @default(0)
+  productsImported Int @default(0)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  results     DiscoveryResult[]
+}
+
+/// Results from automated discovery scans
+model DiscoveryResult {
+  id          String   @id @default(cuid())
+  ruleId      String
+  rule        DiscoveryRule @relation(fields: [ruleId], references: [id], onDelete: Cascade)
+  
+  // Product data at time of discovery
+  title       String
+  url         String
+  price       Decimal  @db.Decimal(10, 2)
+  rating      Decimal? @db.Decimal(3, 2)
+  reviewCount Int?
+  bsr         Int?
+  category    String?
+  
+  // Calculated metrics
+  estimatedMargin Decimal @db.Decimal(5, 2)
+  estimatedProfit Decimal @db.Decimal(10, 2)
+  score       Decimal @db.Decimal(5, 2) // Overall opportunity score
+  
+  // Status
+  status      DiscoveryStatus @default(NEW)
+  productId   String?
+  product     Product? @relation(fields: [productId], references: [id])
+  notes       String?
+  
+  discoveredAt DateTime @default(now())
+  reviewedAt   DateTime?
+  
+  @@index([ruleId])
+  @@index([status])
+  @@index([discoveredAt])
+}
+
+enum DiscoveryStatus {
+  NEW
+  REVIEWING
+  IMPORTED
+  REJECTED
+  DUPLICATE
 }

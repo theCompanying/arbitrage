@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SellerCentralApiService } from '@/lib/seller-central-api';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@arbitrage/database';
 
 export async function POST(request: NextRequest) {
   try {
