@@ -171,3 +171,120 @@ model ResearchNote {
   
   @@index([productId])
 }
+
+/// Amazon Seller Central account configuration
+model SellerCentralAccount {
+  id              String   @id @default(cuid())
+  accountName     String   // e.g., "US Marketplace"
+  marketplace     Marketplace @default(US)
+  
+  // SP-API credentials (stored encrypted in production)
+  lwaClientId     String?  // Login with Amazon client ID
+  lwaClientSecret String?  // Login with Amazon client secret
+  lwaRefreshToken String?  // Long-lived refresh token
+  spApiRoleArn    String?  // IAM role ARN for SP-API
+  
+  // Token management
+  accessToken     String?  // Current access token
+  tokenExpiresAt  DateTime?
+  
+  status          AccountStatus @default(PENDING)
+  lastSyncAt      DateTime?
+  syncError       String?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  orders          AmazonOrder[]
+  reports         AmazonReport[]
+}
+
+enum Marketplace {
+  US
+  CA
+  UK
+  DE
+  FR
+  IT
+  ES
+  JP
+  AU
+}
+
+enum AccountStatus {
+  PENDING
+  CONNECTED
+  ERROR
+  DISCONNECTED
+}
+
+/// Orders synced from Amazon Seller Central
+model AmazonOrder {
+  id              String   @id @default(cuid())
+  amazonOrderId   String   @unique // Amazon's order ID
+  
+  accountId       String
+  account         SellerCentralAccount @relation(fields: [accountId], references: [id])
+  
+  // Order details
+  purchaseDate    DateTime
+  lastUpdateDate  DateTime?
+  orderStatus     OrderStatus
+  fulfillmentChannel String? // AFN (merchant), MFN (Amazon)
+  salesChannel    String?
+  
+  // Shipping
+  shipServiceLevel String?
+  shipCity        String?
+  shipState       String?
+  shipCountry     String?
+  shipPostalCode  String?
+  
+  // Financials
+  marketplaceId   String?
+  currency        String   @default("USD")
+  totalAmount     Decimal  @db.Decimal(10, 2)
+  
+  // Items
+  itemsJson       String?  // JSON array of order items
+  
+  // Sync metadata
+  syncedAt        DateTime @default(now())
+  
+  @@index([accountId])
+  @@index([purchaseDate])
+}
+
+/// Reports from Seller Central (sales, inventory, etc.)
+model AmazonReport {
+  id              String   @id @default(cuid())
+  reportType      String   // e.g., GET_SALES_AND_TRAFFIC_REPORT
+  reportId        String?  // Amazon's report ID
+  
+  accountId       String
+  account         SellerCentralAccount @relation(fields: [accountId], references: [id])
+  
+  // Report metadata
+  startDate       DateTime?
+  endDate         DateTime?
+  generatedAt     DateTime?
+  
+  // Storage
+  documentId      String?  // S3 document ID from Amazon
+  downloadedAt    DateTime?
+  dataJson        String?  // Parsed JSON data
+  
+  status          ReportStatus @default(PENDING)
+  
+  createdAt       DateTime @default(now())
+  
+  @@index([accountId])
+  @@index([reportType])
+}
+
+enum ReportStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
