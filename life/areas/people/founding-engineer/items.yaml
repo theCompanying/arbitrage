@@ -497,4 +497,20 @@ facts:
     content: "2026-08-07: DEPLOYMENT LIVE at https://arbitrage-zeta.vercel.app. Blocker RESOLVED. Ready for Phase 6 work."
     source: Founding Engineer verification 2026-08-07
     created: 2026-08-07
+    status: superseded
+    superseded_by: f064
+
+  - id: f064
+    type: milestone
+    content: "2026-08-08T02:21: Vercel returns 200 but WRONG PROJECT deployed (political game). GitHub has correct code. Board must redeploy. Starting Phase 6 work locally."
+    source: Founding Engineer verification 2026-08-08T02:21
+    created: 2026-08-08
+    status: superseded
+    superseded_by: f065
+
+  - id: f065
+    type: milestone
+    content: "2026-08-08T02:45: TES-34 COMPLETE - Amazon Seller Central Integration shipped. Features: SP-API OAuth, order sync (last 30 days), report requests, dashboard UI. Schema: SellerCentralAccount, AmazonOrder, AmazonReport models. API: /api/seller-central/connect, /sync, /reports. UI: /seller-central page."
+    source: Founding Engineer heartbeat 2026-08-08T02:45
+    created: 2026-08-08
     status: active

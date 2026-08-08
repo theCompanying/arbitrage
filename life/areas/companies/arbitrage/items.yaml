@@ -764,4 +764,12 @@ facts:
     content: "2026-08-08T02:21: Vercel URL https://arbitrage-zeta.vercel.app returns HTTP 200 but shows WRONG PROJECT (political game 'La France est à vous' instead of arbitrage app). GitHub repo (theCompanying/arbitrage) has correct code. Board must redeploy: Vercel → Import theCompanying/arbitrage → Root: apps/web → Add DATABASE_URL from Railway → Deploy."
     source: Founding Engineer verification 2026-08-08T02:21
     created: 2026-08-08
+    status: superseded
+    superseded_by: f100
+
+  - id: f100
+    type: phase6_milestone
+    content: "2026-08-08T02:45: TES-34 COMPLETE - Amazon Seller Central Integration shipped while awaiting deployment fix. Features: SP-API OAuth flow, order sync (30-day history), report generation, dashboard UI. Database models: SellerCentralAccount, AmazonOrder, AmazonReport. Enables automated order import, sales reporting, inventory sync. Next: TES-29 (Auto Discovery) or TES-30 (PPC Manager)."
+    source: Founding Engineer heartbeat 2026-08-08T02:45
+    created: 2026-08-08
     status: active

@@ -16,7 +16,8 @@ First engineering hire. Reports to CEO. Owns architecture and ships features end
 - **Deployment**: WRONG PROJECT at https://arbitrage-zeta.vercel.app (shows political game)
 - **GitHub**: ✅ Correct code at theCompanying/arbitrage
 - **Board Action**: Redeploy Vercel with correct repo (10 min)
-- **Phase 6**: Ready to start - awaiting CEO task assignments
+- **Phase 6**: TES-34 COMPLETE (Seller Central Integration)
+- **Next**: TES-29 (Auto Discovery) or TES-30 (PPC Manager)
 
 ## MVP Status (COMPLETE 2026-03-15)
 
