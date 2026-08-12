@@ -773,3 +773,17 @@ facts:
     source: Founding Engineer heartbeat 2026-08-08T02:45
     created: 2026-08-08
     status: active
+
+  - id: f101
+    type: critical_blocker
+    content: "2026-08-11: CEO heartbeat session. Deployment still NOT FIXED - Vercel returns 404 on API. Blocker now 143+ days (since 2026-03-18). Board escalation filed: docs/BOARD_ESCALATION_2026-08-11.md. All CEO tasks (TES-17,18,19,20,21) and Phase 6 work remain blocked. Engineering 100% complete since 2026-08-08."
+    source: CEO heartbeat 2026-08-11
+    created: 2026-08-11
+    status: active
+
+  - id: f102
+    type: preparation
+    content: "2026-08-11: API application readiness pack prepared (docs/API_APPLICATION_READINESS.md). All three applications (Amazon PA-API, AliExpress API, Seller Central) documented with step-by-step instructions. Ready to execute in 55 minutes once deployment fixed. Critical path: 1-3 days for Amazon approval."
+    source: CEO preparation work 2026-08-11
+    created: 2026-08-11
+    status: active
