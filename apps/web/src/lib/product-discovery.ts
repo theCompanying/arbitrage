@@ -116,8 +116,8 @@ async function fetchAliExpressCategory(
   const params = new URLSearchParams({
     SearchText: rule.keywords.join(' ') || '',
     SortType: 'order_asc',
-    MinimumPrice: rule.priceRange ? String(rule.priceRange.min || '') : '',
-    MaximumPrice: rule.priceRange ? String(rule.priceRange.max || '') : '',
+    MinimumPrice: rule.priceRange ? String((rule.priceRange as { min?: number; max?: number }).min || '') : '',
+    MaximumPrice: rule.priceRange ? String((rule.priceRange as { min?: number; max?: number }).max || '') : '',
   });
 
   const url = `${baseUrl}?${params.toString()}`;

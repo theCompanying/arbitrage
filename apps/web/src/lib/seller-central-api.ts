@@ -170,39 +170,69 @@ export class SellerCentralApiService {
       }
 
       for (const order of orders) {
+        const orderData = order as {
+          AmazonOrderId: string;
+          PurchaseDate: string;
+          LastUpdateDate?: string;
+          OrderStatus: string;
+          FulfillmentChannel?: string;
+          SalesChannel?: string;
+          ShipServiceLevel?: string;
+          ShipCity?: string;
+          ShipState?: string;
+          ShipCountry?: string;
+          ShipPostalCode?: string;
+          MarketplaceId?: string;
+          CurrencyCode?: string;
+          OrderTotal?: { Amount: string };
+          OrderItems?: unknown[];
+        };
+
+        const statusMap: Record<string, 'PENDING' | 'CONFIRMED' | 'PRODUCTION' | 'SHIPPED' | 'IN_TRANSIT' | 'DELIVERED' | 'CANCELLED'> = {
+          'PENDING': 'PENDING',
+          'CONFIRMED': 'CONFIRMED',
+          'UNSHIPPED': 'CONFIRMED',
+          'PARTIALLY_SHIPPED': 'SHIPPED',
+          'SHIPPED': 'SHIPPED',
+          'IN_TRANSIT': 'IN_TRANSIT',
+          'DELIVERED': 'DELIVERED',
+          'CANCELLED': 'CANCELLED',
+        };
+        const mappedStatus = statusMap[orderData.OrderStatus.toUpperCase()] || 'PENDING';
+
         try {
           await prisma.amazonOrder.upsert({
-            where: { amazonOrderId: order.AmazonOrderId },
+            where: { amazonOrderId: orderData.AmazonOrderId },
             create: {
-              amazonOrderId: order.AmazonOrderId,
+              amazonOrderId: orderData.AmazonOrderId,
               accountId: (await prisma.sellerCentralAccount.findFirst({
                 where: { lwaClientId: this.config.lwaClientId },
               }))!.id,
-              purchaseDate: new Date(order.PurchaseDate),
-              lastUpdateDate: order.LastUpdateDate ? new Date(order.LastUpdateDate) : null,
-              orderStatus: order.OrderStatus.toUpperCase(),
-              fulfillmentChannel: order.FulfillmentChannel,
-              salesChannel: order.SalesChannel,
-              shipServiceLevel: order.ShipServiceLevel,
-              shipCity: order.ShipCity,
-              shipState: order.ShipState,
-              shipCountry: order.ShipCountry,
-              shipPostalCode: order.ShipPostalCode,
-              marketplaceId: order.MarketplaceId,
-              currency: order.CurrencyCode || 'USD',
-              totalAmount: parseFloat(order.OrderTotal?.Amount || '0'),
-              itemsJson: JSON.stringify(order.OrderItems || []),
+              purchaseDate: new Date(orderData.PurchaseDate),
+              lastUpdateDate: orderData.LastUpdateDate ? new Date(orderData.LastUpdateDate) : null,
+              orderStatus: mappedStatus,
+              fulfillmentChannel: orderData.FulfillmentChannel,
+              salesChannel: orderData.SalesChannel,
+              shipServiceLevel: orderData.ShipServiceLevel,
+              shipCity: orderData.ShipCity,
+              shipState: orderData.ShipState,
+              shipCountry: orderData.ShipCountry,
+              shipPostalCode: orderData.ShipPostalCode,
+              marketplaceId: orderData.MarketplaceId,
+              currency: orderData.CurrencyCode || 'USD',
+              totalAmount: parseFloat(orderData.OrderTotal?.Amount || '0'),
+              itemsJson: JSON.stringify(orderData.OrderItems || []),
             },
             update: {
-              lastUpdateDate: order.LastUpdateDate ? new Date(order.LastUpdateDate) : null,
-              orderStatus: order.OrderStatus.toUpperCase(),
-              totalAmount: parseFloat(order.OrderTotal?.Amount || '0'),
+              lastUpdateDate: orderData.LastUpdateDate ? new Date(orderData.LastUpdateDate) : null,
+              orderStatus: mappedStatus,
+              totalAmount: parseFloat(orderData.OrderTotal?.Amount || '0'),
             },
           });
           result.synced++;
         } catch (error) {
           result.failed++;
-          result.errors.push(`Failed to sync order ${order.AmazonOrderId}: ${(error as Error).message}`);
+          result.errors.push(`Failed to sync order ${orderData.AmazonOrderId}: ${(error as Error).message}`);
         }
       }
 
