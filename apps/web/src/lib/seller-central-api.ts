@@ -19,7 +19,7 @@ export interface OrderSyncResult {
 export interface ReportSyncResult {
   reportId: string;
   status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'FAILED';
-  data?: any;
+  data?: unknown;
 }
 
 const MARKETPLACE_ENDPOINTS: Record<Marketplace, string> = {
@@ -110,7 +110,7 @@ export class SellerCentralApiService {
     resource: string;
     method?: 'GET' | 'POST' | 'DELETE';
     query?: Record<string, string>;
-    body?: any;
+    body?: unknown;
   }): Promise<T> {
     const accessToken = await this.getAccessToken();
     const endpoint = this.getEndpoint();
@@ -146,7 +146,7 @@ export class SellerCentralApiService {
 
     try {
       const ordersData = await this.makeRequest<{
-        orders: any[];
+        orders: unknown[];
         nextToken?: string;
       }>({
         resource: '/orders/v0/orders',
@@ -161,7 +161,7 @@ export class SellerCentralApiService {
       let orders = ordersData.orders || [];
 
       while (ordersData.nextToken) {
-        const nextData = await this.makeRequest<{ orders: any[]; nextToken?: string }>({
+        const nextData = await this.makeRequest<{ orders: unknown[]; nextToken?: string }>({
           resource: '/orders/v0/orders',
           query: { NextToken: ordersData.nextToken },
         });
@@ -287,7 +287,7 @@ export class SellerCentralApiService {
     }
   }
 
-  async downloadReport(reportId: string): Promise<any> {
+  async downloadReport(reportId: string): Promise<{ csvText: string; reportId: string }> {
     try {
       const report = await prisma.amazonReport.findUnique({
         where: { id: reportId },
